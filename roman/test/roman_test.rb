@@ -21,9 +21,10 @@ class TestRoman < Test::Unit::TestCase
    assert_equal 'C',Roman.convert(100)
    assert_equal 'CXXV',Roman.convert(125)
    assert_equal 'CCCLXXXXVII',Roman.convert(397)
-   assert_equal 'DCCVLXXXXIX',Roman.convert(799)
+   assert_equal 'DCCLXXXXIX',Roman.convert(799)
    assert_equal 'M',Roman.convert(1000)
-   
+   assert_equal 'IX',Roman.convert(9)
+   assert_equal 'IV',Roman.convert(4) 
 
 
 
