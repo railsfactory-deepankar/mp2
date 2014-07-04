@@ -10,12 +10,28 @@ class TestRoman < Test::Unit::TestCase
 
 
   def test_one
-    assert_equal 'I',Roman.convert(1)
+   assert_equal 'I',Roman.convert(1)
    assert_equal 'II',Roman.convert(2)
    assert_equal 'III',Roman.convert(3)
-    assert_equal 'XV',Roman.convert(15)
+   assert_equal 'XXV',Roman.convert(25)
+   assert_equal 'XXXVII',Roman.convert(37)
+   assert_equal 'XXXXVI',Roman.convert(46)
+   assert_equal 'L',Roman.convert(50)
+   assert_equal 'LXXXVII',Roman.convert(87)
+   assert_equal 'C',Roman.convert(100)
+   assert_equal 'CXXV',Roman.convert(125)
+   assert_equal 'CCCLXXXXVII',Roman.convert(397)
+   assert_equal 'DCCVLXXXXIX',Roman.convert(799)
+   assert_equal 'M',Roman.convert(1000)
+   
+
+
+
+   
+
   end
 
 
 
 end  
+
