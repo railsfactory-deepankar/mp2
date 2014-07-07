@@ -15,8 +15,7 @@ class TestSpell_digit < Test::Unit::TestCase
     assert_equal "five thousand",Spell_digit.convert(5000)
      assert_equal "nine thousand five hundread fifty five",Spell_digit.convert(9555)
       assert_equal "five hundread",Spell_digit.convert(500)
-       assert_equal "fifteen thousand six hundread",Spell_digit.convert(15600)
-# assert_equal "six million seven hundread sixty nine thousand seven hundread fifty six",Spell_digit.convert(6769756)
+ assert_equal "six million seven hundread sixtynine thousand seven hundread fifty six",Spell_digit.convert(6769756)
  assert_equal "ninety thousand four hundread seventy two",Spell_digit.convert(90472)
 
 
