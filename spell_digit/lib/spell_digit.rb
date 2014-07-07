@@ -36,7 +36,7 @@ class Spell_digit
 }
 
 
-  def self.convert(number)
+def self.convert(number)
 c1 = 0   
 c2 = 0
 c3 = 0
@@ -77,33 +77,39 @@ while n > 10
 	n = n % 10
 end
 c4 = n
+
 str = " "
 if c5 != 0
-str = str+Nums[c5]+" billion "+" "
+	str = str+Nums[c5]+" billion "+" "
 end
 if c6 != 0
-str = str+Nums[c6]+" million "
+	str = str+Nums[c6]+" million "
 end
 if c7 != 0
-str = str+Nums[c7]+" hundread "
+	str = str+Nums[c7]+" hundread "
 end
 if c8 != 0 and c1 == 0
-str = str+Nums[c8]+" thousand"
+	str = str+Nums[c8]+" thousand"
 end
 if c8 == 0 and c1 != 0 
-str = str+Nums[c1]+" thousand"
+	str = str+Nums[c1]+" thousand"
 end
 if c1 != 0 and c8 != 0
-str = str+Nums[c8]+Nums[c1]+" thousand"
+	if number >= 11000 and number < 20000
+	c = c1 + c8
+	str = str+Nums[c]+" thousand"
+	else
+	str = str+Nums[c8]+Nums[c1]+" thousand"
+	end
 end
 if c2 != 0
-str = str+" "+Nums[c2]+" hundread "
+	str = str+" "+Nums[c2]+" hundread "
 end
 if c3 != 0
-str = str+Nums[c3]+" "
+	str = str+Nums[c3]+" "
 end
 if c4 != 0
-str = str+Nums[c4]+" "
+	str = str+Nums[c4]+" "
 end
 return str.strip
 end 
