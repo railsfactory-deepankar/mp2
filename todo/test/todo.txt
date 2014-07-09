@@ -1,0 +1,5 @@
+wakeup #undone
+brush #done
+bath #undone
+go to office #undone
+come back to room #done
