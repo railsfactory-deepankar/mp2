@@ -1,6 +1,4 @@
-require '../lib/storage_load.rb'
-require '../lib/marking.rb'
-require '../lib/status.rb'
+
 require '../lib/storage_dump.rb'
 require 'test/unit'
 
@@ -41,27 +39,23 @@ bath #undone
 go to office #undone
 come back to room #undone',Load.load
 end
-
 def test_mark
 
 assert_equal'wakeup #done
 brush #undone
 bath #undone
 go to office #undone
-come back to room #undone
+come back to room #done
 ', Marked.mark(0)
 assert_equal'wakeup #done
 brush #undone
 bath #done
 go to office #undone
-come back to room #undone
+come back to room #done
 ', Marked.mark(2)
 end
-
-
 def test_one      
      assert_equal 'brush #undone go to office #undone come back to room #undone',Status.pend
 end
 end
-
 
