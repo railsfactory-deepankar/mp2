@@ -10,6 +10,6 @@ f.close
 f1 = File.open("todo.txt", "r")
 str = f1.read
 f1.close
-return str
+return str 
 end
 end
