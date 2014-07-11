@@ -5,8 +5,8 @@ $t = Todolist.new("deep.txt")
 class Testtodo < Test::Unit::TestCase
 
 
-def test_zempty
-assert_equal true, $t.empty
+def test_aaempty
+assert_equal 0, $t.empty
 assert_equal 0, $t.pending
 assert_equal 0, $t.list
 assert_equal 0, $t.completed
@@ -38,21 +38,18 @@ end
 
 def test_complete
 assert_equal 1, $t.complete(1)
-#assert_equal 2, @t.complete(2)
 assert_equal 3, $t.pending
 assert_equal 4, $t.list
 assert_equal 1, $t.completed
 end
 def test_delete
 assert_equal 0, $t.delete(1)
-#assert
 assert_equal 3, $t.pending
 assert_equal 3, $t.list
 assert_equal 0, $t.completed
 end
 def test_modify
 assert_equal 3, $t.modify(1,"close")
-
 assert_equal 0, $t.completed
 assert_equal 3, $t.pending
 assert_equal 3, $t.list
@@ -64,9 +61,9 @@ def test_show_completed
 assert_equal nil , $t.show_completed(1)
 end
 def test_store
-assert_equal true, $t.save
+assert_equal 3, $t.save
 end
-
+def test_tload
+assert_equal 3, $t.load1
 end
-  
-
+end
