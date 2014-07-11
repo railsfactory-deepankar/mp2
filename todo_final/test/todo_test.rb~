@@ -18,7 +18,6 @@ assert_equal 0, @t.pending.size
 assert_equal 0, @t.list.size
 assert_equal 0, @t.completed.size
 end
-
 def test_add1
 @t.empty
 @t.add("open")
@@ -26,7 +25,6 @@ assert_equal 1, @t.pending.size
 assert_equal 1, @t.list.size
 assert_equal 0, @t.completed.size
 end
-
 def test_add2
 @t.empty
 @t.add("open")
@@ -35,7 +33,6 @@ assert_equal 2, @t.pending.size
 assert_equal 2, @t.list.size
 assert_equal 0, @t.completed.size
 end
-
 def test_add3
 @t.empty
 @t.add("open")
@@ -45,7 +42,6 @@ assert_equal 3, @t.pending.size
 assert_equal 3, @t.list.size
 assert_equal 0, @t.completed.size
 end
-
 def test_add4
 @t.empty
 @t.add("open")
@@ -63,16 +59,18 @@ def test_complete
 @t.add("save")
 @t.add("edit")
 @t.add("select")
-
+#precondition
 assert_equal 4, @t.pending.size
 assert_equal 4, @t.list.size
 assert_equal 0, @t.completed.size
+#action
 
 @t.complete(1)
 
-assert_equal 3, @t.pending.size
+#after
+assert_equal 2, @t.pending.size
 assert_equal 4, @t.list.size
-assert_equal 1, @t.completed.size
+assert_equal 2, @t.completed.size
 end
 
 def test_delete
@@ -130,8 +128,13 @@ assert_equal 0, @t.completed.size
 assert_equal 1, @t.pending.size
 assert_equal 2, @t.list.size
 assert_equal 1, @t.completed.size
-assert_equal "open" , @t.show_completed(1)
-
-
+assert_equal "save" , @t.show_completed(1)
+end
+=begin
+def test_store
+assert_equal 3, @t.save
+end
+def test_tload
+assert_equal 3, @t.load1
 end
 end
