@@ -22,7 +22,7 @@ class Testtodo < Test::Unit::TestCase
     
         def test_add1
 	   @t.empty
-	   @t.add("one")
+	   @t.add("sleep")
 	   assert_equal 1,@t.list.size
 	   assert_equal 1,@t.pending.size
 	   assert_equal 0,@t.completed.size
@@ -32,8 +32,8 @@ class Testtodo < Test::Unit::TestCase
 
 	def test_add2
 	   @t.empty
-	   @t.add("one")
-	   @t.add("two")
+	   @t.add("sleep")
+	   @t.add("wakeup")
 	   assert_equal 2,@t.list.size
 	   assert_equal 2,@t.pending.size
 	   assert_equal 0,@t.completed.size
@@ -43,8 +43,8 @@ class Testtodo < Test::Unit::TestCase
 		
 		# precondition
 		@t.empty
-		@t.add("one #undone")
-                @t.add("two #undone")
+		@t.add("sleep #undone")
+                @t.add("wakeup #undone")
 		#before state
 		assert_equal 2,@t.pending.size
 		assert_equal 0,@t.completed.size
@@ -66,7 +66,7 @@ class Testtodo < Test::Unit::TestCase
 
 		 # precondition
 		 @t.empty
-		 @t.add("one #undone")
+		 @t.add("sleep #undone")
 		 @t.complete(1)
 
 		 
@@ -88,8 +88,8 @@ class Testtodo < Test::Unit::TestCase
 	 def test_modify
 		 # precondition
 		 @t.empty
-		 @t.add("one")
-		 @t.add("two")
+		 @t.add("sleep")
+		 @t.add("wakeup")
 	       
 		 #before state
 		 assert_equal 2,@t.pending.size
@@ -97,7 +97,7 @@ class Testtodo < Test::Unit::TestCase
 		 assert_equal 2,@t.list.size
 
 		#action
-		 @t.modify(1,"three")
+		 @t.modify(1,"play")
 	 
 		 #after
 		 assert_equal 2,@t.pending.size
@@ -108,8 +108,8 @@ class Testtodo < Test::Unit::TestCase
 	 def test_show_pending
 		 # precondition
 		 @t.empty
-		 @t.add("one")
-		 @t.add("two")
+		 @t.add("sleep")
+		 @t.add("wakeup")
 	       
 		 #before state
 		 assert_equal 2,@t.pending.size
@@ -130,9 +130,9 @@ class Testtodo < Test::Unit::TestCase
 	 def test_show_complete
 		 # precondition
 		 @t.empty
-		 @t.add("one #undone")
-		 @t.add("two #undone")
-                 @t.add("three #undone")
+		 @t.add("sleep #undone")
+		 @t.add("wakeup #undone")
+                 @t.add("brush #undone")
 	       
 		 #before state
 		 assert_equal 3,@t.pending.size
@@ -146,15 +146,15 @@ class Testtodo < Test::Unit::TestCase
 		 assert_equal 2,@t.pending.size
 		 assert_equal 1,@t.completed.size
 		 assert_equal 3,@t.list.size
-                 assert_equal "one #done",@t.show_completed(1) 
+                 assert_equal "sleep #done",@t.show_completed(1) 
                  
 	end
 	 def test_storage
 		 # precondition
 		 @t.empty
-		 @t.add("goto market #undone")
-		 @t.add("goto movie #undone")
-                 @t.add("buy books #undone")
+		 @t.add("sleep #undone")
+		 @t.add("wakeup #undone")
+                 @t.add("play #undone")
 	       
 		 #before state
 		 assert_equal 3,@t.pending.size
@@ -168,7 +168,7 @@ class Testtodo < Test::Unit::TestCase
                  assert_equal 2,@t.pending.size
 		 assert_equal 1,@t.completed.size
 		 assert_equal 3,@t.list.size
-                 assert_equal "goto market #done",@t.show_completed(1) 
+                 assert_equal "sleep #done",@t.show_completed(1) 
                  
                  #deleting the elements of array
                  @t.empty
