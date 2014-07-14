@@ -68,6 +68,9 @@ str =""
 str = @todo.join("\n")
 f.write(str)
 f.close
+count = 0
+File.open(filename) {|f| count = f.read.count("\n")}
+count+1
 end
 
 def load1
