@@ -1,0 +1,4 @@
+goto market #done
+goto movie #done
+buy books #undone
+read books #undone

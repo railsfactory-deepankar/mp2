@@ -79,4 +79,20 @@ def load1
    @completed = @todo.select {|c| c.match("#done")}
     @pending = @todo - @completed
 end
+def save_to_file(filename)
+	f = File.open(filename, "w")
+	str = ""
+	str = @todo.join("\n")
+	f.write(str)
+	f.close
+	count = 0
+	File.open(filename) {|f| count = f.read.count("\n")}
+	count+1
+end
+def load_from_file(filename)
+   f = File.open(filename,'r')
+   f.each_line { |line| todo << line.strip }
+   @completed = @todo.select {|c| c.match("#done")}
+    @pending = @todo - @completed
+end
 end

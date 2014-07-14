@@ -149,7 +149,7 @@ class Testtodo < Test::Unit::TestCase
                  assert_equal "one #done",@t.show_completed(1) 
                  
 	end
-	 def test_storage
+	 def test_storage1
 		 # precondition
 		 @t.empty
 		 @t.add("goto market #undone")
@@ -165,10 +165,11 @@ class Testtodo < Test::Unit::TestCase
 		  @t.complete(1)
                   @t.complete(1)
                   @t.save
+		  
                  #after saving   
-		
-                 assert_equal 4, @t.save  #checking for the count of lines in the file
-                 #deleting the elements of array
+		  assert_equal 4, @t.save  #checking for the count of lines in the file
+                
+		 #deleting the elements of array
                  @t.empty
                  assert_equal 0,@t.pending.size
 		 assert_equal 0,@t.completed.size
@@ -176,6 +177,7 @@ class Testtodo < Test::Unit::TestCase
                  
                  # calling load function
                  @t.load1
+		 
                  #after loading
                  assert_equal 2,@t.pending.size
 		 assert_equal 2,@t.completed.size
@@ -184,7 +186,44 @@ class Testtodo < Test::Unit::TestCase
                  assert_equal "goto market #done",@t.show_completed(1)
 		 assert_equal "goto movie #done",@t.show_completed(2) 
       end
-               
+      def test_storage
+		 # precondition
+		 @t.empty
+		 @t.add("goto market #undone")
+		 @t.add("goto movie #undone")
+                 @t.add("buy books #undone")
+	         @t.add("read books #undone")
+		 #before state
+		 assert_equal 4,@t.pending.size
+		 assert_equal 0,@t.completed.size
+		 assert_equal 4,@t.list.size
+                 
+                 #action
+		  @t.complete(1)
+                  @t.complete(1)
+                  
+		  @t.save_to_file("dk.txt")
+                 #after saving   
+		  
+                  assert_equal 4, @t.save_to_file("dk.txt") #checking the count of the lines in the specified file
+		 #deleting the elements of array
+                 @t.empty
+                 assert_equal 0,@t.pending.size
+		 assert_equal 0,@t.completed.size
+		 assert_equal 0,@t.list.size
+                 
+                 # calling load function
+                 #@t.load1
+		 @t.load_from_file("deepankar.txt")
+                 #after loading
+                 assert_equal 2,@t.pending.size
+		 assert_equal 2,@t.completed.size
+		 assert_equal 4,@t.list.size
+		 assert_equal "buy books #undone",@t.show_pending(1) 
+                 assert_equal "goto market #done",@t.show_completed(1)
+		 assert_equal "goto movie #done",@t.show_completed(2) 
+      end
+      
 end
  
 
