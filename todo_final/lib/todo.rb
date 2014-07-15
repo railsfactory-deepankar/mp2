@@ -24,7 +24,7 @@ end
 
 def add(items)
 @todo << items
-@pending << items
+@pending << items + " #undone"
 @pending
 end
 
@@ -94,5 +94,7 @@ def load_from_file(filename)
    f.each_line { |line| todo << line.strip }
    @completed = @todo.select {|c| c.match("#done")}
     @pending = @todo - @completed
+    
 end
+
 end

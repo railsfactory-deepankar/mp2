@@ -43,8 +43,8 @@ class Testtodo < Test::Unit::TestCase
 		
 		# precondition
 		@t.empty
-		@t.add("one #undone")
-                @t.add("two #undone")
+		@t.add("one")
+                @t.add("two")
 		#before state
 		assert_equal 2,@t.pending.size
 		assert_equal 0,@t.completed.size
@@ -66,7 +66,7 @@ class Testtodo < Test::Unit::TestCase
 
 		 # precondition
 		 @t.empty
-		 @t.add("one #undone")
+		 @t.add("one")
 		 @t.complete(1)
 
 		 
@@ -123,16 +123,16 @@ class Testtodo < Test::Unit::TestCase
 		 assert_equal 2,@t.pending.size
 		 assert_equal 0,@t.completed.size
 		 assert_equal 2,@t.list.size
-                 assert_equal "one",@t.show_pending(1)
+                 assert_equal "one #undone",@t.show_pending(1)
                  
 	end
 
 	 def test_show_complete
 		 # precondition
 		 @t.empty
-		 @t.add("one #undone")
-		 @t.add("two #undone")
-                 @t.add("three #undone")
+		 @t.add("one")
+		 @t.add("two")
+                 @t.add("three")
 	       
 		 #before state
 		 assert_equal 3,@t.pending.size
@@ -152,10 +152,10 @@ class Testtodo < Test::Unit::TestCase
 	 def test_storage1
 		 # precondition
 		 @t.empty
-		 @t.add("goto market #undone")
-		 @t.add("goto movie #undone")
-                 @t.add("buy books #undone")
-	         @t.add("read books #undone")
+		 @t.add("goto market")
+		 @t.add("goto movie")
+                 @t.add("buy books")
+	         @t.add("read books")
 		 #before state
 		 assert_equal 4,@t.pending.size
 		 assert_equal 0,@t.completed.size
@@ -189,10 +189,10 @@ class Testtodo < Test::Unit::TestCase
       def test_storage
 		 # precondition
 		 @t.empty
-		 @t.add("goto market #undone")
-		 @t.add("goto movie #undone")
-                 @t.add("buy books #undone")
-	         @t.add("read books #undone")
+		 @t.add("goto market")
+		 @t.add("goto movie")
+                 @t.add("buy books")
+	         @t.add("read books")
 		 #before state
 		 assert_equal 4,@t.pending.size
 		 assert_equal 0,@t.completed.size
@@ -214,14 +214,15 @@ class Testtodo < Test::Unit::TestCase
                  
                  # calling load function
                  #@t.load1
-		 @t.load_from_file("deepankar.txt")
+		 @t.load_from_file("dk.txt")
                  #after loading
                  assert_equal 2,@t.pending.size
 		 assert_equal 2,@t.completed.size
 		 assert_equal 4,@t.list.size
 		 assert_equal "buy books #undone",@t.show_pending(1) 
                  assert_equal "goto market #done",@t.show_completed(1)
-		 assert_equal "goto movie #done",@t.show_completed(2) 
+		 assert_equal "goto movie #done",@t.show_completed(2)
+		  
       end
       
 end
