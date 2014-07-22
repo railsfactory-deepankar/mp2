@@ -1,0 +1,23 @@
+<html>
+<head><h1> Contents present in the Table</h1> </head>
+<body>
+<style>
+table,th,td
+{
+border:1px solid black;
+}
+</style>
+<table border ='1' style="width:400px">
+<%c = 0 %>
+<%@content.each do |item| %>
+<% if c == 0 %>
+<th><%=item.keys %></th>
+<%end %>
+<tr>
+<td><%=item.values %></td>
+</tr>
+<%c = c+1 %>
+<%end%>
+</table>
+</body>
+</html>

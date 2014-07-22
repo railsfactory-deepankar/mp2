@@ -1,0 +1,10 @@
+<html>
+<head><h1> Databases present in the system</h1> </head>
+<ol>
+<% @res.each do |item| %>
+<%=item["Database"] %>
+<a href='/show_table?item=<%=item["Database"]%>'>show_table</a><br/>
+<%end %>
+</ol>
+</body>
+</html>

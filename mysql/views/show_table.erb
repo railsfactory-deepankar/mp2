@@ -1,0 +1,11 @@
+<html>
+<head><h1> Tables present in the system</h1> </head>
+<h3>Enter the database name and table name you wanna view</h3>
+<ol>
+<% @res.each do |item| %>
+<a href="/show_content?table=<%=item.values.first %>"><li><%=item.values.first %></li></a>
+
+<%end %>
+</ol>
+</body>
+</html>
